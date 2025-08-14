@@ -1,0 +1,212 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubscriptionPlanEnum {
+  STANDARD
+  PREMIUM
+  UNLIMITED
+}
+
+enum BotThemeEnum {
+  light
+  dark
+  system
+}
+
+enum ChatRoleEnum {
+  assistant
+  user
+}
+
+model User {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  clerkId         String   @unique
+  email           String   @unique
+  firstName       String?
+  lastName        String?
+  avatar          String?
+  stripeConnectId String?  @db.VarChar(255)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  domains   Domain[]
+  campaigns Campaign[]
+
+  subscription Subscription? @relation("UserSubscription")
+}
+
+model Subscription {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User   @relation("UserSubscription", fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique @db.Uuid
+
+  subscriptionPlan   SubscriptionPlan @relation(fields: [subscriptionPlanId], references: [id])
+  subscriptionPlanId String           @db.Uuid
+}
+
+model SubscriptionPlan {
+  id           String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  plan         SubscriptionPlanEnum @unique
+  description  String?
+  price        Int // in USD
+  domainLimit  Int?
+  emailLimit   Int?
+  contactLimit Int?
+  features     String[]
+
+  subscriptions Subscription[]
+}
+
+model Domain {
+  id   String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String  @unique
+  icon String?
+
+  chatBot         ChatBot?
+  customers       Customer[]
+  products        Product[]
+  helpDesk        HelpDesk[]
+  filterQuestions FilterQuestion[]
+  bookings        Booking[]
+
+  User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String?   @db.Uuid
+  Campaign   Campaign? @relation(fields: [campaignId], references: [id])
+  campaignId String?   @db.Uuid
+}
+
+model ChatBot {
+  id             String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  welcomeMessage String        @default("Hey there, have a question? Text us here")
+  icon           String?
+  theme          BotThemeEnum? @default(system)
+  botBackground  String?
+  bubbleColor    String?
+  textColor      String?
+  helpdesk       Boolean       @default(false)
+
+  Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId String? @unique @db.Uuid
+}
+
+model ChatRoom {
+  id     String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  live   Boolean @default(false)
+  mailed Boolean @default(false)
+
+  messages ChatMessage[]
+
+  Customer   Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String?   @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ChatMessage {
+  id      String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  message String
+  seen    Boolean       @default(false)
+  role    ChatRoleEnum?
+
+  ChatRoom   ChatRoom? @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+  chatRoomId String?   @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  date  DateTime
+  slot  String
+  email String
+
+  Domain     Domain?   @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId   String?   @db.Uuid
+  Customer   Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String?   @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HelpDesk {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question String
+  answer   String
+
+  Domain   Domain? @relation(fields: [domainId], references: [id])
+  domainId String? @db.Uuid
+}
+
+model FilterQuestion {
+  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question String
+  answer   String?
+
+  Domain   Domain? @relation(fields: [domainId], references: [id])
+  domainId String? @db.Uuid
+}
+
+model Product {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String  @default("Untitled Product")
+  description String? @default("No description")
+  price       Int
+  image       String?
+
+  Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId String? @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Customer {
+  id        String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String?
+  questions CustomerResponse[]
+  chatRooms ChatRoom[]
+  bookings  Booking[]
+
+  Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId String? @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CustomerResponse {
+  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question String
+  answer   String?
+
+  Customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId String?   @db.Uuid
+}
+
+model Campaign {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String  @default("Untitled Campaign")
+  description String? @default("No description")
+  message     String
+
+  customers String[]
+  domains   Domain[]
+
+  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

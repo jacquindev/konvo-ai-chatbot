@@ -1,0 +1,11 @@
+node_modules
+.next
+.husky
+out
+public
+coverage
+dist
+docs
+build
+*.log
+.prettierignore

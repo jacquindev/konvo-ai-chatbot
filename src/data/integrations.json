@@ -1,0 +1,87 @@
+[
+  {
+    "category": "payments",
+    "comingSoon": false,
+    "title": "Stripe",
+    "titleClassName": "bg-gradient-to-br from-[#9333ea] to-[#38bdf8] text-transparent bg-clip-text",
+    "description": "Stripe is a payment processing platform that allows you to accept payments online.",
+    "logoId": {
+      "dark": "e5527a4b-28d9-4ded-8aed-0f4570c3d7d5",
+      "light": "e5527a4b-28d9-4ded-8aed-0f4570c3d7d5"
+    },
+    "learnMoreLink": "https://stripe.com/connect",
+    "connectCTA": {
+      "title": "Powering Payouts with Stripe Connect",
+      "description": "Monetize your chatbots. Get paid effortlessly.",
+      "logoId": {
+        "dark": "e5527a4b-28d9-4ded-8aed-0f4570c3d7d5",
+        "light": "e5527a4b-28d9-4ded-8aed-0f4570c3d7d5"
+      },
+      "features": [
+        "Instant payouts to creators and vendors",
+        "Custom and Express onboarding flows",
+        "Automated tax reporting & compliance",
+        "Revenue sharing with split payments",
+        "Global support in 30+ countries",
+        "Supports local and global payment methods"
+      ]
+    }
+  },
+  {
+    "category": "schedule",
+    "comingSoon": true,
+    "title": "Google Calendar",
+    "titleClassName": "bg-gradient-to-br from-[#4285F4] via-[#34A853] to-[#FBBC05] text-transparent bg-clip-text",
+    "description": "Sync chatbot events, bookings, and reminders directly to your users’ Google Calendars.",
+    "logoId": {
+      "dark": "475c5e01-db0d-43e9-950d-3af9376ce407",
+      "light": "475c5e01-db0d-43e9-950d-3af9376ce407"
+    },
+    "logoClassName": "size-8",
+    "learnMoreLink": "https://developers.google.com/calendar",
+    "connectCTA": {
+      "title": "Connect with Google Calendar",
+      "description": "Sync chatbot events, bookings, and reminders directly to your users’ Google Calendars.",
+      "logoId": {
+        "dark": "cb8bb00f-0e52-42df-9d0a-77840aede2b1",
+        "light": "cb8bb00f-0e52-42df-9d0a-77840aede2b1"
+      },
+      "features": [
+        "Two-way sync between Konvo and Google Calendar",
+        "Auto-create events from chatbot bookings",
+        "Sync reminders and availability",
+        "OAuth-secured Google login",
+        "Real-time calendar updates",
+        "Supports multiple calendar accounts"
+      ]
+    }
+  },
+  {
+    "category": "schedule",
+    "comingSoon": true,
+    "title": "Calendly",
+    "titleClassName": "bg-gradient-to-br from-[#006BFF] via-[#00B2C3] to-[#00C5B4] text-transparent bg-clip-text",
+    "description": "Let users schedule meetings or book appointments directly through your chatbot using Calendly.",
+    "logoId": {
+      "dark": "f6851f71-63c8-4cf4-926b-fff50f4d18d2",
+      "light": "b88fa0f4-27f5-4a10-af6b-2e7bfd73ff6c"
+    },
+    "logoClassName": "size-8",
+    "learnMoreLink": "https://developer.calendly.com",
+    "connectCTA": {
+      "title": "Schedule meetings with Calendly",
+      "description": "Let users book time with you or your team directly from the chatbot.",
+      "logoId": {
+        "dark": "76c082b3-38fa-4752-8e47-36877ca24d38",
+        "light": "dfbcff6e-6ec8-4b58-baec-6a3d1d155b92"
+      },
+      "features": [
+        "Trigger booking links inside conversations",
+        "Auto-insert availability based on user intent",
+        "Syncs with Google Calendar",
+        "Reduce back-and-forth scheduling",
+        "OAuth-secured Calendly login"
+      ]
+    }
+  }
+]

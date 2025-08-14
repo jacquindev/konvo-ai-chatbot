@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Real-time AI chat",
+    "description": "Deliver instant, accurate answers through conversational AI.",
+    "icon": "MessageCircle"
+  },
+  {
+    "title": "Multilingual support",
+    "description": "Support global audiences with automatic language detection and translation.",
+    "icon": "GlobeIcon"
+  },
+  {
+    "title": "Embed anywhere",
+    "description": "Easily integrate the chatbot widget into any website or platform.",
+    "icon": "Code"
+  },
+  {
+    "title": "Custom styling",
+    "description": "Make the assistant match your brand with rich customization.",
+    "icon": "Palette"
+  },
+  {
+    "title": "Analytics dashboard",
+    "description": "Track usage, queries, and feedback with a visual dashboard.",
+    "icon": "BarChart"
+  },
+  {
+    "title": "Smart filtering",
+    "description": "Filter out irrelevant questions and train your assistant with precision.",
+    "icon": "Sparkles"
+  }
+]

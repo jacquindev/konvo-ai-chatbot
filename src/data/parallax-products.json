@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Prisma",
+    "link": "https://www.prisma.io/",
+    "thumbnailId": "bb843fcc-dd89-4c73-b6af-127fd4282c91"
+  },
+  {
+    "title": "Clerk",
+    "link": "https://clerk.com",
+    "thumbnailId": "2ecd4869-cd73-4ebd-92b8-9e8e5cbb6393"
+  },
+  {
+    "title": "OpenAI",
+    "link": "https://chat.openai.com",
+    "thumbnailId": "2c3e9f7a-57ad-4f12-8df1-5ef4a429f462"
+  },
+  {
+    "title": "Vercel",
+    "link": "https://vercel.com",
+    "thumbnailId": "17229bae-d20c-400c-98e8-fe5fe78a1655"
+  },
+  {
+    "title": "Linear",
+    "link": "https://linear.app",
+    "thumbnailId": "602cca1c-1f37-4b81-80e0-22cf3bf73602"
+  },
+  {
+    "title": "Neon",
+    "link": "https://neon.com",
+    "thumbnailId": "fd84c7cc-c270-4bda-8367-07dceaee74f1"
+  },
+  {
+    "title": "Uploadcare",
+    "link": "https://uploadcare.com/",
+    "thumbnailId": "5ff1899d-20ce-4599-b49f-685b948c6361"
+  },
+  {
+    "title": "Pixel Perfect",
+    "link": "https://app.pixelperfect.quest",
+    "thumbnailId": "7bdb5eee-55fa-4df6-b014-37d6675c5c84"
+  },
+  {
+    "title": "Tailwind Master Kit",
+    "link": "https://tailwindmasterkit.com",
+    "thumbnailId": "6eead926-01ce-40ac-86c5-3f35a3f41580"
+  },
+  {
+    "title": "Aceternity UI",
+    "link": "https://ui.aceternity.com",
+    "thumbnailId": "7b53fc6f-924c-43c4-87d3-e17380512474"
+  },
+  {
+    "title": "Figma",
+    "link": "https://figma.com",
+    "thumbnailId": "67244995-d014-4349-ac1e-d1f3c960f8f8"
+  },
+  {
+    "title": "Motion One",
+    "link": "https://motion.dev",
+    "thumbnailId": "cff25143-7b3a-40ed-b6ef-b367622d1359"
+  },
+  {
+    "title": "Cursor",
+    "link": "https://cursor.so",
+    "thumbnailId": "726421b6-2022-4829-ba90-79f2fa1370f5"
+  },
+  {
+    "title": "Moonbeam",
+    "link": "https://www.gomoonbeam.com/",
+    "thumbnailId": "8538eca3-d53d-4aad-a62a-7b0710e2be38"
+  },
+  {
+    "title": "Algochurn",
+    "link": "https://algochurn.com",
+    "thumbnailId": "a0810f13-21d5-4ea1-a91b-f518062eb384"
+  },
+  {
+    "title": "Renderwork Studio",
+    "link": "https://renderwork.studio",
+    "thumbnailId": "b244f97a-9e31-44b3-9865-d779cae428f8"
+  }
+]

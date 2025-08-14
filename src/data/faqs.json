@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is Konvo?",
+    "answer": "Konvo is an AI-powered chatbot designed to act as your online sales assistant. You can embed it seamlessly on any website to engage visitors, answer questions, and boost conversions—automatically."
+  },
+  {
+    "question": "How do I integrate Konvo into my website?",
+    "answer": "Integration is simple. Just copy and paste a single line of code (the Konvo snippet) into your site’s HTML or tag manager. No technical expertise required."
+  },
+  {
+    "question": "What types of websites does Konvo work with?",
+    "answer": "Konvo works with all modern websites—whether you're running an e-commerce store, marketing agency site, portfolio, or custom-built platform. It supports platforms like WordPress, Shopify, Webflow, Wix, and more."
+  },
+  {
+    "question": "Can Konvo handle multiple domains or pages?",
+    "answer": "Depending on your plan, Konvo can support multiple domains and pages. Our higher-tier plans include support for multiple sites and advanced routing between pages."
+  },
+  {
+    "question": "Is Konvo customizable to match my brand?",
+    "answer": "Yes! You can fully customize Konvo's chat widget—including colors, avatar, welcome message, and tone—to match your brand’s voice and design."
+  },
+  {
+    "question": "What kind of questions can Konvo answer?",
+    "answer": "Konvo is trained to answer FAQs, product-related queries, service explanations, and can even help guide users through the sales funnel. You can also train it further with custom prompts and data."
+  },
+  {
+    "question": "Can I use Konvo to collect leads?",
+    "answer": "Yes. You can upload documents, connect your help center, or sync external sources to fully personalize responses.Absolutely. Konvo can capture contact details, qualify leads, and pass them directly into your CRM or email automation tools."
+  },
+  {
+    "question": "How does Konvo improve sales?",
+    "answer": "By offering instant responses, personalized product suggestions, and 24/7 availability, Konvo increases engagement, reduces bounce rates, and nudges users toward purchase decisions."
+  },
+  {
+    "question": "Is there a free trial?",
+    "answer": "Yes! You can try Konvo for free with our Standard Plan, which includes basic features to help you get started."
+  }
+]
