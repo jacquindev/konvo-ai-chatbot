@@ -1,5 +1,5 @@
 import { onGetAllFilterQuestions, onGetAllHelpDeskQuestions } from "@/actions/chatbot"
-import { onGetCurrentDomainInfo } from "@/actions/domain"
+import { onGetAllDomainProducts, onGetCurrentDomainInfo } from "@/actions/domain"
 import AppHeader from "@/components/global/app-header"
 import { TabsNavigation } from "@/components/global/tabs"
 import { queryClient } from "@/lib/react-query"
@@ -41,6 +41,11 @@ const Layout = async ({ children, params }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: ["domain-filter-questions"],
     queryFn: () => onGetAllFilterQuestions(domainId),
+  })
+
+  await queryClient.prefetchQuery({
+    queryKey: ["domain-products"],
+    queryFn: () => onGetAllDomainProducts(domainId)
   })
 
   return (

@@ -15,12 +15,14 @@ type Props = {
   placeholder?: string
 }
 
+// TODO: Build a functional search bar
+
 const Search = ({ userId, placeholder }: Props) => {
   return (
     <div className={searchBarStyle()}>
       <SearchIcon className={searchIconStyle()} />
       <Input
-        placeholder={placeholder ?? "Search for Customers, Domains, Emails, etc..."}
+        placeholder={placeholder ?? "Search ..."}
         className={searchInputStyle()}
       />
     </div>

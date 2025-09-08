@@ -228,3 +228,54 @@ export const onUpdateDomainName = async (domainId: string, name: string) => {
     return { status: 500, message: "Internal Server Error" }
   }
 }
+
+export const onGetAllDomainProducts = async (domainId: string) => {
+  try {
+    const products = await prisma.domain.findMany({
+      where: { id: domainId },
+      select: {
+        products: true,
+      },
+    })
+
+    if (products) {
+      return { status: 200, products: products[0].products }
+    }
+
+    return { status: 404 }
+  } catch (error) {
+    console.error(error)
+    return { status: 500 }
+  }
+}
+
+export const onCreateDomainProduct = async (
+  domainId: string,
+  name: string,
+  image: string,
+  price: string
+) => {
+  try {
+    const product = await prisma.domain.update({
+      where: { id: domainId },
+      data: {
+        products: {
+          create: {
+            name,
+            image,
+            price: parseInt(price),
+          },
+        },
+      },
+    })
+
+    if (product) {
+      return { status: 200, message: "Successfully created new product" }
+    }
+
+    return { status: 400, message: "Oops! Something went wrong" }
+  } catch (error) {
+    console.error(error)
+    return { status: 500, message: "Internal Server Error" }
+  }
+}

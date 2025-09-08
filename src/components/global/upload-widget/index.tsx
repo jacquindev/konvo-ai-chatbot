@@ -119,7 +119,10 @@ const UploadWidget = ({ register, label, errors, className, id, name = "image" }
         <div className="flex flex-col items-center justify-center gap-2">
           <UploadIcon className="text-muted-foreground h-8 w-8" />
           <span className="text-base font-medium">
-            Drag & drop {" "}<span className="italic">or</span>{" "} Click to upload
+            <span className="text-primary italic underline underline-offset-2">Drag & drop</span> or{" "}
+            <span className="text-primary italic underline underline-offset-2">
+              Click to upload
+            </span>
           </span>
         </div>
       )}
@@ -139,7 +142,7 @@ const UploadWidget = ({ register, label, errors, className, id, name = "image" }
       />
       <p
         id={id ? `${id}-desc` : undefined}
-        className="text-muted-foreground mt-2 max-w-xs text-center text-xs italic"
+        className="text-muted-foreground mt-2 max-w-xs text-center text-xs"
       >
         Recommended size is 300px × 300px, less than 10MB.
       </p>

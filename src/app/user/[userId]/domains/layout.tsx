@@ -22,7 +22,7 @@ const Layout = async ({ children, params }: Props) => {
             description="Access, organize, and control your domains from one place."
           />
         </div>
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row items-center gap-x-4 px-4">
           <AddDomain isPage size="lg" className="w-fit rounded-lg" animated />
           <PlanCredits type="domain" userId={userId} animated />
         </div>

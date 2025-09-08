@@ -1,5 +1,5 @@
 import { onGetAllFilterQuestions, onGetAllHelpDeskQuestions } from "@/actions/chatbot"
-import { onGetCurrentDomainInfo } from "@/actions/domain"
+import { onGetAllDomainProducts, onGetCurrentDomainInfo } from "@/actions/domain"
 import { useQuery } from "@tanstack/react-query"
 
 export const useQueryCurrentDomain = (domainId: string) => {
@@ -18,7 +18,14 @@ export const useQueryDomainHelpDesk = (domainId: string) => {
 
 export const useQueryDomainFilterQuestion = (domainId: string) => {
   return useQuery({
-    queryKey: ["domain-filter-question"],
+    queryKey: ["domain-filter-questions"],
     queryFn: () => onGetAllFilterQuestions(domainId),
+  })
+}
+
+export const useQueryDomainProducts = (domainId: string) => {
+  return useQuery({
+    queryKey: ["domain-products"],
+    queryFn: () => onGetAllDomainProducts(domainId),
   })
 }

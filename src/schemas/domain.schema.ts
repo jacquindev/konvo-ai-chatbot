@@ -12,7 +12,7 @@ export const AddDomainSchema = z.object({
   image: z
     .any()
     .refine(files => files?.[0]?.size <= MAX_UPLOAD_SIZE, {
-      message: "Your file size must be less then 10MB",
+      message: "Your file size must be less than 10MB",
     })
     .refine(files => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), {
       message: "Only JPG, JPEG, PNG & SVG are accepted file formats",
@@ -29,4 +29,17 @@ export const DomainNameSchema = z.object({
     )
     .optional()
     .or(z.literal("").transform(() => undefined)),
+})
+
+export const DomainProductSchema = z.object({
+  name: z.string().min(3, { message: "Product name must have at least 3 characters" }),
+  image: z
+    .any()
+    .refine(files => files?.[0]?.size <= MAX_UPLOAD_SIZE, {
+      message: "Your file size must be less than 10MB",
+    })
+    .refine(files => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), {
+      message: "Only JPG, JPEG, PNG & SVG are accepted file formats",
+    }),
+  price: z.string(),
 })

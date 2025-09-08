@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useHelpDesk } from "@/hooks/contexts/chatbot"
 import { useQueryDomainHelpDesk } from "@/hooks/queries"
 import { cn } from "@/lib/utils"
-import { Loader2 } from "lucide-react"
+import { Loader2, Trash2 } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -16,7 +16,8 @@ import { usePathname } from "next/navigation"
 type Props = { domainId: string }
 
 const ChatBotHelpDesk = ({ domainId }: Props) => {
-  const { register, errors, handleAddHelpDesk, addingHelpDesk } = useHelpDesk(domainId)
+  const { register, errors, handleAddHelpDesk, addingHelpDesk, deletingId, deleteHelpDesk } =
+    useHelpDesk(domainId)
   const { data, isPending } = useQueryDomainHelpDesk(domainId)
 
   const questions = data?.questions ?? []
@@ -25,7 +26,7 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
   return (
     <Card className="w-full overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="p-6 border-b lg:border-r lg:border-b-0 border-border space-y-6">
+        <div className="border-border space-y-6 border-b p-6 lg:border-r lg:border-b-0">
           <CardHeader>
             <CardTitle className="text-2xl">Help Desk</CardTitle>
             <CardDescription className="text-sm">
@@ -40,7 +41,7 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
                   label="Question"
                   description="Enter a frequently asked question."
                   inputType="input"
-                  placeholder="What is the best way to contact you?"
+                  placeholder="What is Konvo?"
                   register={register}
                   name="question"
                   errors={errors}
@@ -56,7 +57,7 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
                   inputType="textarea"
                   form="help-desk-form"
                   name="answer"
-                  placeholder="Write the answer here..."
+                  placeholder="Konvo is an AI-powered chatbot that can answer questions and help with tasks..."
                   type="text"
                   lines={5}
                 />
@@ -77,13 +78,13 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
           </CardContent>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="space-y-4 p-6">
           <div className="flex items-center gap-2">
             <CardTitle className="text-lg">FAQ List</CardTitle>
             <AppTooltip content="These are the active questions shown in your chatbot." />
           </div>
 
-          <CardContent className="space-y-4 p-0 max-h-[400px] overflow-y-auto">
+          <CardContent className="max-h-[400px] space-y-4 overflow-y-auto p-0">
             <AnimatePresence initial={false} mode="wait">
               {questions.length > 0 ? (
                 questions.map(item => (
@@ -94,7 +95,7 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.2 }}
                     className={cn(
-                      "relative border border-border rounded-lg px-4 pb-3 pt-0 transition bg-muted hover:bg-primary/15"
+                      "border-border bg-muted hover:bg-primary/15 relative rounded-lg border px-4 pt-0 pb-3 transition"
                     )}
                   >
                     <Link href={`${pathname}?question=${item.question.trim()}`}>
@@ -105,8 +106,20 @@ const ChatBotHelpDesk = ({ domainId }: Props) => {
                       />
                     </Link>
 
-                    <div className="absolute bottom-1 right-3 flex gap-1 items-center">
-                      {/* TODO: Delete Helpdesk button */}
+                    <div className="absolute right-3 bottom-1 flex items-center gap-1">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => deleteHelpDesk(item.id)}
+                        disabled={deletingId === item.id}
+                        className="text-destructive hover:bg-destructive/10 size-6 hover:cursor-pointer"
+                      >
+                        {deletingId === item.id ? (
+                          <Loader2 className="animate-spin" />
+                        ) : (
+                          <Trash2 className="h-4 w-4" />
+                        )}
+                      </Button>
                     </div>
                   </motion.div>
                 ))

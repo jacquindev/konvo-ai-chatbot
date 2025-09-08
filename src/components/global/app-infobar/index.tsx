@@ -17,7 +17,7 @@ const AppInfoBar = ({ userId }: Props) => {
         <BreadCrumb userId={userId} />
       </div>
 
-      <div className="flex w-6/12 flex-wrap items-center gap-2 md:flex-row">
+      <div className="flex w-5/12 flex-wrap items-center gap-2 md:flex-row">
         <Search userId={userId} />
         <Separator orientation="vertical" className="ml-2 data-[orientation=vertical]:h-4" />
         <ThemeSwitcher />

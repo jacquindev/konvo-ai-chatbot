@@ -157,3 +157,45 @@ export const onCreateFilterQuestion = async (domainId: string, question: string)
     return { status: 500, message: "Internal Server Error" }
   }
 }
+
+export const onDeleteHelpDeskQuestion = async (id: string) => {
+  try {
+    const deleted = await prisma.helpDesk.delete({
+      where: { id },
+      select: { question: true }
+    })
+
+    if (deleted) {
+      return {
+        status: 200,
+        message: "Help desk question deleted successfully",
+        data: deleted.question,
+      }
+    }
+
+  } catch (error) {
+    console.error(error)
+    return { status: 500, message: "Internal Server Error" }
+  }
+}
+
+export const onDeleteFilterQuestion = async (id: string) => {
+  try {
+    const deleted = await prisma.filterQuestion.delete({
+      where: { id },
+      select: { question: true }
+    })
+
+    if (deleted) {
+      return {
+        status: 200,
+        message: "Filter question deleted successfully",
+        data: deleted.question,
+      }
+    }
+
+  } catch (error) {
+    console.error(error)
+    return { status: 500, message: "Internal Server Error" }
+  }
+}
